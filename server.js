@@ -31,7 +31,6 @@ function start() {
         }).then(function (answer) {
             if (answer.action === "View All") {
                 viewAll();
-
             }
             else if(answer.action === "Add Employee") {
                 viewByDept();
@@ -39,9 +38,15 @@ function start() {
             else if(answer.action === "Update Employee") {
                 update();
             }
-           
+            else{
+                connection.end();
+            }
 
 
         });
 
     }        
+
+    function viewAll() {
+        connection.query("SELECT * FROM employees")
+    }
