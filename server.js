@@ -48,5 +48,5 @@ function start() {
     }        
 
     function viewAll() {
-        connection.query("SELECT * FROM employees")
+        connection.query("SELECT employee.id,employee.first_name, employee.last_name, role.title,role.salary, department.name, CONCAT(e.first_name,' ',e.last_name) AS Manager
     }
