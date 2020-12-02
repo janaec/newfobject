@@ -1,0 +1,25 @@
+{
+  "name": "newfobject",
+  "version": "1.0.0",
+  "description": "Employee Tracker",
+  "main": "server.js",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janaec/newfobject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janaec/newfobject/issues"
+  },
+  "homepage": "https://github.com/janaec/newfobject#readme"
+}
