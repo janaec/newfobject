@@ -27,15 +27,23 @@ function start() {
             name: "firstprompt",
             type: "list",
             message: "Where would you like to start?",
-            choices: ["View All", "View All By Department", "Add Employee", "Update Employee", "Exit"]
+            choices: ["View All", "View All By Department","View All Employees", "Add Employee", "Update Employee", "Exit"]
         }).then(function (answer) {
-            if (answer.action === "View All") {
+            // console.log(answer.firstprompt);
+            if (answer.firstprompt === "View All") {
                 viewAll();
             }
-            else if (answer.action === "Add Employee") {
+            else if (answer.firstprompt === "View All Employees") {
+                // console.log("Maybe it works")
+                viewAllEmployees();
+            }
+            else if (answer.firstprompt === "View All By Department") {
                 viewByDept();
             }
-            else if (answer.action === "Update Employee") {
+            else if (answer.firstprompt === "Add Employee") {
+                addEmployee();
+            }
+            else if (answer.firstprompt === "Update Employee") {
                 update();
             }
             else {
@@ -46,7 +54,13 @@ function start() {
         });
 
 }
-
+function viewAllEmployees() {
+    connection.query("SELECT * FROM employeetrackerdb.employee;",function(err,res){
+        if (err)throw err
+        console.table(res)
+        // console.log("It works!");
+    });
+}
 function viewAll() {
     connection.query("SELECT employee.id,employee.first_name, employee.last_name, role.title,role.salary, department.name, CONCAT(e.first_name,' ',e.last_name) AS Manager FROM employee INNER JOIN role on role.id = employee.role_id INNER JOIN department on department.id = role.department_id left join employee e on employee.manager_id = e.id;",
         function (err, res) {
